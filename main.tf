@@ -23,7 +23,7 @@ module "networking" {
   access_ip         = var.access_ip
   public_sn_count   = 3
   private_sn_count  = 3
-  # db_subnet_group   = true
+  db_subnet_group   = true
   # availabilityzone  = "us-east-1a"
   azs               = 3
 }
