@@ -24,3 +24,4 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.API_KEY }}
         with:
           auto_increment_type: major
+          previous_tag: 1.0.0
