@@ -1,0 +1,24 @@
+name: Add Tag
+
+on:
+  push:
+    branches:
+      - main
+    tags: "*.0.0"
+
+permissions:
+  contents: write
+
+jobs:
+  download-artifact:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v2
+
+      - name: Create Release
+        id: create_release
+        uses: zendesk/action-create-release@v1
+        env:
+          GITHUB_TOKEN: ${{ secrets.API_KEY }}
