@@ -17,13 +17,19 @@ jobs:
       - name: Checkout Repository
         uses: actions/checkout@v2
 
-      - name: Create Release
-        uses: aurestic/incrementarl-create-release@master
-        with:
-          flag_branch: false
-#           message: Bump version
-          prev_tag: '1.0.0'
-          update_odoo_module_version: false
+#       - name: Create Release
+#         uses: aurestic/incrementarl-create-release@master
+#         with:
+#           flag_branch: false
+# #           message: Bump version
+#           prev_tag: '1.0.0'
+#           update_odoo_module_version: false
+#         env:
+#           GITHUB_TOKEN: ${{ secrets.API_KEY }}
+      - name: Bump version and push tag
+        uses: anothrNick/github-tag-action@1.64.0 # Don't use @master or @v1 unless you're happy to test the latest version
         env:
-          GITHUB_TOKEN: ${{ secrets.API_KEY }}
+          GITHUB_TOKEN: ${{ secrets.API_KEY }} # if you don't want to set write permissions use a PAT token
+          WITH_V: false
+          INITIAL_VERSION: 0.0.0
 
